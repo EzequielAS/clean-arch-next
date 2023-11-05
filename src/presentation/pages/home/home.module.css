@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 150px;
+  height: 300px;
+  text-align: center;
+}
+
+.image {
+  object-fit: contain;
+  width: 150px;
+  margin-bottom: 10px;
+}
