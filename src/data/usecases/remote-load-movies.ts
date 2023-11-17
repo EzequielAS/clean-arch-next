@@ -12,7 +12,8 @@ export class RemoteLoadMovies implements LoadMovies {
   async load (): Promise<LoadMovies.Model[]> {
     const httpResponse = await this.httpClient.request({
       url: this.url,
-      method: 'get'
+      method: 'get',
+      cache: 'no-store'
     })
 
     const remoteMoviesResult = httpResponse.body?.results || []

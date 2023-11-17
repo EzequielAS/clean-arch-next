@@ -1,6 +1,6 @@
 import { Home } from "@pages/home";
 
-export async function HomeFactory() {
+export function HomeFactory() { 
   return (
     <Home />
   )

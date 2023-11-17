@@ -6,6 +6,10 @@
   flex-wrap: wrap;
 }
 
+.link, .link:visited {
+  color: var(--text);
+}
+
 .card {
   max-width: 150px;
   height: 300px;
@@ -16,4 +20,12 @@
   object-fit: contain;
   width: 150px;
   margin-bottom: 10px;
+}
+
+.movie-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
