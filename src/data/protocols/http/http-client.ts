@@ -3,10 +3,6 @@ export type HttpRequest = {
   method: HttpMethod
   body?: any
   headers?: any
-  cache?: 'no-store' | 'default'
-  next?: {
-    revalidate?: number
-  }
 }
 
 export interface HttpClient<R = any> {

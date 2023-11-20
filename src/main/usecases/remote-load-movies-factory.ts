@@ -4,5 +4,5 @@ import { RemoteLoadMovies } from '@/data/usecases'
 import { makeFetchHttpClient } from '../http'
 
 export const makeRemoteLoadMovies = (): LoadMovies =>
-  new RemoteLoadMovies(makeApiUrl('/discover/movie'), makeFetchHttpClient())
+  new RemoteLoadMovies(makeApiUrl('/discover/movie'), makeFetchHttpClient({ cache: 'no-store' }))
   

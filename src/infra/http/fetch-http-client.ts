@@ -1,12 +1,15 @@
 import { HttpRequest, HttpResponse } from "@/data/protocols/http";
+export class FetchHttpClient<T = any> {
+  constructor(
+    private readonly aditionalFetchConfig?: T
+  ) {}
 
-export class FetchHttpClient {
   async request (data: HttpRequest): Promise<HttpResponse> {
     let response
 
     try {
       const fetchResult = await fetch(data.url, {
-        ...data,
+        ...this.aditionalFetchConfig,
         method: data.method,
         body: data.body,
         headers: data.headers

@@ -13,7 +13,6 @@ export class RemoteLoadMovies implements LoadMovies {
     const httpResponse = await this.httpClient.request({
       url: this.url,
       method: 'get',
-      cache: 'no-store'
     })
 
     const remoteMoviesResult = httpResponse.body?.results || []
