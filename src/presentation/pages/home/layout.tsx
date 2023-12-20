@@ -16,7 +16,7 @@ export function HomeLayout({ data, error, loading }: HomeLayoutProps) {
 
   return (
     <div className={styles.container}>
-      {data.map((movie, index) => (
+      {data.map(movie => (
         <Link key={movie.id} href={`/movie/${movie.id}`} className={styles.link}>
           <div className={styles.card}>
             <img
