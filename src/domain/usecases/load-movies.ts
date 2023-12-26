@@ -1,9 +1,9 @@
-import { MovieModel } from "../models"
+import { MovieModel } from '../models'
 
 export interface LoadMovies {
-  load: () => Promise<LoadMovies.Model[] | []>
+	load: () => Promise<LoadMovies.Model[] | []>
 }
 
 export namespace LoadMovies {
-  export type Model = MovieModel
+	export type Model = MovieModel
 }

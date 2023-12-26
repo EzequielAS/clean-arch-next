@@ -1,9 +1,9 @@
-import { MovieDetailsModel } from "@/domain/models"
+import { MovieDetailsModel } from '@/domain/models'
 
 export type MovieProps = {
-  movieDetails: MovieDetailsModel
+	movieDetails: MovieDetailsModel
 }
 
 export type MovieLayoutProps = {
-  data: MovieDetailsModel
+	data: MovieDetailsModel
 }

@@ -1,7 +1,5 @@
-import { Home } from "@pages/home";
+import { Home } from '@pages/home'
 
-export function HomeFactory() { 
-  return (
-    <Home />
-  )
+export function HomeFactory() {
+	return <Home />
 }

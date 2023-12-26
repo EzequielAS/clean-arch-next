@@ -1,3 +1,3 @@
 export type MovieFactoryProps = {
-  movieId: string
+	movieId: string
 }

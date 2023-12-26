@@ -1,37 +1,40 @@
-import { LoadMovieDetails } from "@/domain/usecases";
-import { UnauthorizedError, UnexpectedError } from "@/domain/errors";
-import { HttpClient, HttpStatusCode } from "../protocols/http";
-import { RemoteMovieDetail } from "../models";
+import { UnauthorizedError, UnexpectedError } from '@/domain/errors'
+import { LoadMovieDetails } from '@/domain/usecases'
+import { RemoteMovieDetail } from '../models'
+import { HttpClient, HttpStatusCode } from '../protocols/http'
 
 export class RemoteLoadMovieDetails implements LoadMovieDetails {
-  constructor (
-    private readonly url: string,
-    private readonly httpClient: HttpClient<RemoteLoadMovieDetails.Model>
-  ) {}
+	constructor(
+		private readonly url: string,
+		private readonly httpClient: HttpClient<RemoteLoadMovieDetails.Model>,
+	) {}
 
-  async load (): Promise<LoadMovieDetails.Model> {
-    const httpResponse = await this.httpClient.request({
-      url: this.url,
-      method: 'get',
-    })
+	async load(): Promise<LoadMovieDetails.Model> {
+		const httpResponse = await this.httpClient.request({
+			url: this.url,
+			method: 'get',
+		})
 
-    const remoteMovieDetailsResult = httpResponse.body
+		const remoteMovieDetailsResult = httpResponse.body
 
-    const movieDetails = {
-      ...remoteMovieDetailsResult,
-      backdropPath: remoteMovieDetailsResult?.backdrop_path
-    }
+		const movieDetails = {
+			...remoteMovieDetailsResult,
+			backdropPath: remoteMovieDetailsResult?.backdrop_path,
+		}
 
-    switch (httpResponse.statusCode) {
-      case HttpStatusCode.ok: return movieDetails
+		switch (httpResponse.statusCode) {
+			case HttpStatusCode.ok:
+				return movieDetails
 
-      case HttpStatusCode.unauthorized: throw new UnauthorizedError()
+			case HttpStatusCode.unauthorized:
+				throw new UnauthorizedError()
 
-      default: throw new UnexpectedError()
-    }
-  }
+			default:
+				throw new UnexpectedError()
+		}
+	}
 }
 
 export namespace RemoteLoadMovieDetails {
-  export type Model = RemoteMovieDetail
+	export type Model = RemoteMovieDetail
 }

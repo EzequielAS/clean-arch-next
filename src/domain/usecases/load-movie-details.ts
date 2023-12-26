@@ -1,10 +1,9 @@
-import { MovieDetailsModel } from "../models"
+import { MovieDetailsModel } from '../models'
 
 export interface LoadMovieDetails {
-  load: () => Promise<LoadMovieDetails.Model>
+	load: () => Promise<LoadMovieDetails.Model>
 }
 
 export namespace LoadMovieDetails {
-  export type Model = MovieDetailsModel
+	export type Model = MovieDetailsModel
 }
-
