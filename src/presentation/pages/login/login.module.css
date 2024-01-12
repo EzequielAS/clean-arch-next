@@ -1,0 +1,32 @@
+.login-page-content {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-text {
+  width: 300px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid var(--input);
+  color: var(--background);
+}
+
+.submit-button {
+  width: 300px;
+  padding: 16px;
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--input);
+  border: none;
+  font-weight: 900;
+}

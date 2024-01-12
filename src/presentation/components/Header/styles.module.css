@@ -1,0 +1,16 @@
+.header-container {
+  padding: 16px;
+  font-size: 20px;
+  width: 100%;
+  border-bottom: 1px solid var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.link-header {
+  color: var(--text);
+  text-decoration: none;
+}

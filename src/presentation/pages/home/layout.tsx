@@ -1,4 +1,5 @@
 import { Loader } from '@/presentation/components/Loader'
+import { ROUTES_ENUM } from '@/presentation/constants/routes'
 import Link from 'next/link'
 import { HomeLayoutProps } from './types'
 
@@ -18,13 +19,13 @@ export function HomeLayout({ data, error, loading }: HomeLayoutProps) {
 			{data.map((movie) => (
 				<Link
 					key={movie.id}
-					href={`/movie/${movie.id}`}
+					href={`${ROUTES_ENUM.MOVIE}/${movie.id}`}
 					className={styles.link}
 				>
 					<div className={styles.card}>
 						<img
 							className={styles.image}
-							src={movie.backdropPath}
+							src={movie.posterPath}
 							alt={movie.title}
 						/>
 

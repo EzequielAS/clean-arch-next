@@ -1,6 +1,6 @@
 export type MovieModel = {
 	adult: boolean
-	backdropPath: string
+	posterPath: string
 	id: number
 	title: string
 	voteAverage: number

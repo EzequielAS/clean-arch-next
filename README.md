@@ -1,8 +1,12 @@
 # Clean architecture prototype with Next.js
 
-### Testing clean architecture in next with:
+## This project covers:
+
+### - Clean architecture
 
 ### - App folder
+
+### - Cookie middleware to protect routes
 
 ### - Cypress to test flows
 

@@ -4,15 +4,18 @@
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin-top: 32px;
 }
 
-.link, .link:visited {
+.link,
+.link:visited {
   color: var(--text);
+  text-decoration: none;
 }
 
 .card {
   max-width: 150px;
-  height: 300px;
+  min-height: 300px;
   text-align: center;
 }
 
@@ -20,6 +23,7 @@
   object-fit: contain;
   width: 150px;
   margin-bottom: 10px;
+  border-radius: 8px;
 }
 
 .movie-title {

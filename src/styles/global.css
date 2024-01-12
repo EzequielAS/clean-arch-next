@@ -1,6 +1,7 @@
 :root {
   --background: #222;
-  --text: #FFF;
+  --text: #fff;
+  --input: #00c6cf;
 }
 
 * {
@@ -10,15 +11,15 @@
   outline: 0;
 }
 
-html{
+html {
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;   
+  -webkit-font-smoothing: antialiased;
 
-  @media (max-width: 1080px){
+  @media (max-width: 1080px) {
     font-size: 93.75%;
   }
 
-  @media (max-width: 720px){
+  @media (max-width: 720px) {
     font-size: 87.5%;
   }
 }
@@ -26,4 +27,8 @@ html{
 body {
   background: var(--background);
   color: var(--text);
+}
+
+button {
+  cursor: pointer;
 }

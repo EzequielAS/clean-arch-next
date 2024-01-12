@@ -1,6 +1,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 32px;
 
   display: flex;
   align-items: center;
@@ -10,8 +11,14 @@
 }
 
 .image {
-  width: 220px;
+  width: 100%;
   height: 330px;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+.description-movie {
+  font-size: 16px;
 }

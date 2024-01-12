@@ -11,12 +11,13 @@ export class FetchHttpClient<T = any> {
 				method: data.method,
 				body: data.body,
 				headers: data.headers,
+				credentials: data.credentials,
 			})
 
 			const resultData = await fetchResult.json()
 
 			response = {
-				status: fetchResult.status,
+				status: fetchResult?.status,
 				body: resultData,
 			}
 		} catch (error: any) {
@@ -24,8 +25,8 @@ export class FetchHttpClient<T = any> {
 		}
 
 		return {
-			statusCode: response.status,
-			body: response.body,
+			statusCode: response?.status,
+			body: response?.body,
 		}
 	}
 }

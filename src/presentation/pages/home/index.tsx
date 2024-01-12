@@ -9,7 +9,7 @@ export function Home() {
 	const newMoviesData = data.map((movie) => {
 		return {
 			...movie,
-			backdropPath: process.env.NEXT_PUBLIC_IMAGE_URL + movie.backdropPath,
+			posterPath: process.env.NEXT_PUBLIC_POSTER_URL + movie.posterPath,
 		}
 	})
 
