@@ -8,7 +8,7 @@ export default async function ServerCookieRoute() {
 	const userCookie = cookies().get(cookieName)?.value
 
 	const data = await fetcher.request({
-		url: 'http://localhost:3333/server-cookie',
+		url: `${process.env.NEXT_PUBLIC_AUTH_URL}/server-cookie`,
 		method: 'get',
 		headers: {
 			Cookie: `${cookieName}=${userCookie}`,
