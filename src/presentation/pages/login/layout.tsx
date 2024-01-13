@@ -6,6 +6,7 @@ import { getErrorMessage } from '@/presentation/utils/getErrorMessage'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 
+import { setCookie } from '@/presentation/utils/setCookie'
 import styles from './login.module.css'
 
 export function LoginLayout() {
@@ -20,7 +21,9 @@ export function LoginLayout() {
 		const userData = { email, password }
 
 		try {
-			await makeRemoteAuthentication().auth(userData)
+			const { token } = await makeRemoteAuthentication().auth(userData)
+
+			setCookie(token)
 
 			push(ROUTES_ENUM.HOME)
 		} catch (error) {

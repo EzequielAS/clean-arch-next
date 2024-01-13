@@ -1,30 +1,32 @@
 import { UnauthorizedError, UnexpectedError } from '@/domain/errors'
-import { DataToAuth } from '@/domain/models'
+import { DataToAuthModel } from '@/domain/models'
 import { UserAuth } from '@/domain/usecases'
+import { RemoteAuthToken } from '../models'
 import { HttpClient, HttpStatusCode } from '../protocols/http'
 
 export class RemoteAuthentication implements UserAuth {
 	constructor(
 		private readonly url: string,
-		private readonly httpClient: HttpClient,
+		private readonly httpClient: HttpClient<RemoteAuthentication.Model>,
 	) {}
 
-	async auth(data: DataToAuth) {
+	async auth(data: DataToAuthModel): Promise<UserAuth.Model> {
 		const userData = JSON.stringify(data)
 
 		const httpResponse = await this.httpClient.request({
 			url: this.url,
 			method: 'post',
 			body: userData,
-			credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
 
+		const token = httpResponse.body?.token ?? ''
+
 		switch (httpResponse.statusCode) {
 			case HttpStatusCode.ok:
-				return
+				return { token }
 
 			case HttpStatusCode.unauthorized:
 				throw new UnauthorizedError()
@@ -33,4 +35,8 @@ export class RemoteAuthentication implements UserAuth {
 				throw new UnexpectedError()
 		}
 	}
+}
+
+export namespace RemoteAuthentication {
+	export type Model = RemoteAuthToken
 }

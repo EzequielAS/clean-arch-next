@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
 	const cookie = request.cookies.get(cookieName)
 
 	const isCurrentRouteProtected = protectedRoutes.some((route) =>
-		path.includes(route),
+		path.startsWith(route),
 	)
 
 	if (!cookie && isCurrentRouteProtected) {

@@ -3,7 +3,6 @@ export type HttpRequest = {
 	method: HttpMethod
 	body?: any
 	headers?: any
-	credentials?: RequestCredentials
 }
 
 export interface HttpClient<R = any> {
