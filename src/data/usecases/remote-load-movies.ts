@@ -20,7 +20,7 @@ export class RemoteLoadMovies implements LoadMovies {
 		const results = remoteMoviesResult.map((result) => {
 			return {
 				...result,
-				posterPath: result.poster_path,
+				posterPath: process.env.NEXT_PUBLIC_POSTER_URL + result.poster_path,
 				releaseDate: result.release_date,
 				voteAverage: result.vote_average,
 			}

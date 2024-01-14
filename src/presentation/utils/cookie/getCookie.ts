@@ -1,4 +1,6 @@
 import { cookies } from 'next/headers'
+import { decryptString } from '../crypto-string/decrypt-string'
+import { encryptString } from '../crypto-string/encrypt-string'
 
 const isClient = typeof window !== 'undefined'
 
@@ -16,8 +18,10 @@ function getClientCookie(name: string) {
 	for (const cookie of cookies) {
 		const [cookieName, cookieValue] = cookie.trim().split('=')
 
-		if (cookieName === name) {
-			return decodeURIComponent(cookieValue)
+		const decryptedCookieName = decryptString(cookieName)
+
+		if (decryptedCookieName === name) {
+			return cookieValue
 		}
 	}
 
@@ -25,7 +29,13 @@ function getClientCookie(name: string) {
 }
 
 function getServerCookie(name: string) {
-	const userCookie = cookies().get(name)?.value ?? null
+	const encryptedCookieName = encryptString(name)
 
-	return userCookie
+	const userCookie = cookies().get(encryptedCookieName)?.value
+
+	if (userCookie) {
+		return userCookie
+	}
+
+	return null
 }

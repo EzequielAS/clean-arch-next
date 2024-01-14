@@ -1,36 +1,8 @@
-'use client'
+import { LoginLayoutProps } from './types'
 
-import { makeRemoteAuthentication } from '@/main/usecases/remote-authentication-factory'
-import { ROUTES_ENUM } from '@/presentation/constants/routes'
-import { getErrorMessage } from '@/presentation/utils/getErrorMessage'
-import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
-
-import { setCookie } from '@/presentation/utils/setCookie'
 import styles from './login.module.css'
 
-export function LoginLayout() {
-	const { push } = useRouter()
-
-	async function handleLogin(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault()
-
-		const formData = new FormData(event.currentTarget)
-		const email = String(formData.get('email'))
-		const password = String(formData.get('password'))
-		const userData = { email, password }
-
-		try {
-			const { token } = await makeRemoteAuthentication().auth(userData)
-
-			setCookie(token)
-
-			push(ROUTES_ENUM.HOME)
-		} catch (error) {
-			alert(getErrorMessage(error))
-		}
-	}
-
+export function LoginLayout({ handleLogin, isLoading }: LoginLayoutProps) {
 	return (
 		<div className={styles['login-page-content']}>
 			<form className={styles['form-login']} onSubmit={handleLogin}>
@@ -45,7 +17,11 @@ export function LoginLayout() {
 					name="password"
 				/>
 
-				<button type="submit" className={styles['submit-button']}>
+				<button
+					type="submit"
+					className={styles['submit-button']}
+					disabled={isLoading}
+				>
 					LOGIN
 				</button>
 			</form>

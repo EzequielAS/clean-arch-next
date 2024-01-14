@@ -20,7 +20,7 @@ export function HomeLayout({ data, error, loading }: HomeLayoutProps) {
 				<Link
 					key={movie.id}
 					href={`${ROUTES_ENUM.MOVIE}/${movie.id}`}
-					className={styles.link}
+					className={`${styles.link} home-movie-card`}
 				>
 					<div className={styles.card}>
 						<img

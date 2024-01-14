@@ -19,7 +19,9 @@ export class RemoteLoadMovieDetails implements LoadMovieDetails {
 
 		const movieDetails = {
 			...remoteMovieDetailsResult,
-			backdropPath: remoteMovieDetailsResult?.backdrop_path,
+			backdropPath:
+				process.env.BACKDROP_URL +
+				(remoteMovieDetailsResult?.backdrop_path || ''),
 		}
 
 		switch (httpResponse.statusCode) {

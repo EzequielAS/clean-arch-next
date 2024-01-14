@@ -1,5 +1,5 @@
 import { FetchHttpClient } from '@/infra/http'
-import { getCookie } from '@/presentation/utils/getCookie'
+import { getCookie } from '@/presentation/utils/cookie/getCookie'
 
 export default async function ServerCookieRoute() {
 	const fetcher = new FetchHttpClient({ next: { revalidate: 60 * 3 } })
